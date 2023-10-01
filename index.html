@@ -61,23 +61,55 @@
         </div>
     </div>
 
-    <!-- Firebase App (the core Firebase SDK) -->
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-
-<!-- Firebase Firestore (database) -->
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
-
-<!-- Firebase Initialization -->
-<script>
-  const firebaseConfig = {
-    // Suas configurações aqui
-  };
-
-  const app = firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore(app);
-</script>
-
 
     <script src="scripts.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app-compat.js"></script>
+    <script>
+        // Configurações do seu projeto Firebase
+        const firebaseConfig = {
+        apiKey: "AIzaSyA3GGu6BqvzHd_a-5nzCgyO6YP75GG4Vms",
+        authDomain: "agendamento-com-br.firebaseapp.com",
+        databaseURL: "https://agendamento-com-br-default-rtdb.firebaseio.com",
+        projectId: "agendamento-com-br",
+        storageBucket: "agendamento-com-br.appspot.com",
+        messagingSenderId: "67003191594",
+        appId: "1:67003191594:web:aef22bd98a04d7b7de0e53"
+};
+
+        // Inicializando o Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        document.getElementById("addButton").addEventListener("click", function() {
+            document.getElementById("addModal").style.display = "block";
+        });
+
+        document.querySelector(".close-button").addEventListener("click", function() {
+            document.getElementById("addModal").style.display = "none";
+        });
+
+        document.getElementById("addForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const card = createCard();
+            insertCardInOrder(card);
+            this.reset();
+            document.getElementById("addModal").style.display = "none";
+
+            // Adicionando dados ao Firebase
+            const data = {
+                date: document.getElementById("appointmentDate").value,
+                time: document.getElementById("appointmentTime").value,
+                name: document.getElementById("name").value,
+                phone: document.getElementById("phone").value,
+                birthdate: document.getElementById("birthdate").value,
+                cpf: document.getElementById("cpf").value,
+                city: document.getElementById("city").value,
+                street: document.getElementById("street").value
+            };
+            database.ref('appointments').push(data);
+        });
+
+        // ... restante do seu código JavaScript ...
+    </script>
 </body>
 </html>
