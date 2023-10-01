@@ -1,3 +1,5 @@
+
+
 document.getElementById("addButton").addEventListener("click", function() {
     document.getElementById("addModal").style.display = "block";
 });
@@ -109,3 +111,4 @@ checkbox.addEventListener("click", function(event) {
 });
 
 // ... [restante do código anterior]
+
