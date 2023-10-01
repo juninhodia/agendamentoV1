@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento de Consultas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <button id="addButton">Adicionar Paciente +</button>
+    </header>
+    <main id="cardsContainer">
+        <!-- Os cards de consultas serão inseridos aqui -->
+    </main>
+    <div id="addModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Adicionar Consulta</h2>
+            <form id="addForm">
+                <div>
+                <label for="appointmentDate">Data:</label>
+                <input type="date" id="appointmentDate" required>
+                </div>
+                <div>
+                <label for="appointmentTime">Hora:</label>
+                <input type="time" id="appointmentTime" required>
+                </div>
+                <div>
+                    <label for="name">Nome:</label>
+                    <input type="text" id="name" required>
+                </div>
+                
+                <div>
+                    <label for="phone">Telefone:</label>
+                    <input type="tel" id="phone" required>
+                </div>
+               
+                <div>
+                    <label for="birthdate">Data de Nascimento:</label>
+                    <input type="date" id="birthdate" required>
+                </div>
+                
+                <div>
+                    <label for="cpf">CPF:</label>
+                    <input type="text" id="cpf" required>
+                </div>
+              
+                <div>
+                    <label for="city">Cidade:</label>
+                    <input type="text" id="city" required>
+                </div>
+               
+                <div>
+                    <label for="street">Rua:</label>
+                    <input type="text" id="street" required>
+                </div>
+
+                <button type="submit">Salvar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Firebase App (the core Firebase SDK) -->
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+
+<!-- Firebase Firestore (database) -->
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+
+<!-- Firebase Initialization -->
+<script>
+  const firebaseConfig = {
+    // Suas configurações aqui
+  };
+
+  const app = firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore(app);
+</script>
+
+
+    <script src="scripts.js"></script>
+</body>
+</html>
